@@ -48,7 +48,7 @@ mysqldump --sock=/u01/data/mysql01/mysql.sock  -u root -p  --routines --no-creat
 mysqldump --sock=/u01/data/mysql01/mysql.sock  -u root -p --no-data  --database test  > test_ddl.sql
 /*only data */
 SHOW OPEN TABLES WHERE  In_use > 0;
-mysqldump  --sock=/u01/data/mysql01/mysql.sock  -u root -p --no-create-db --single-transaction --no-create-info --database test > test_dataonly.sql
+mysqldump  --sock=/u01/data/mysql01/mysql.sock  -u root -p --no-create-db --set-gtid-purged=OFF --single-transaction --no-create-info --database test > test_dataonly.sql
 
 /*restore on mysql02 */
 mysql -u root -p oracle --port 3307 test < test_code.sql
